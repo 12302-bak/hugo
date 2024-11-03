@@ -30,6 +30,7 @@ import (
 )
 
 type BaseConfig struct {
+	GitRepoDir string
 	WorkingDir string
 	CacheDir   string
 	ThemesDir  string

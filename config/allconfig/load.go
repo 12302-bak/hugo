@@ -421,7 +421,15 @@ func (l *configLoader) loadConfigMain(d ConfigSourceDescriptor) (config.LoadConf
 
 	workingDir := filepath.Clean(l.cfg.GetString("workingDir"))
 
+	gitRepoDir := workingDir
+	grd := l.cfg.GetString("gitRepoDir")
+	enable := l.cfg.GetBool("enableGitInfo")
+	if grd != "" && enable {
+		gitRepoDir = filepath.Clean(workingDir + "/" + grd)
+	}
+
 	l.BaseConfig = config.BaseConfig{
+		GitRepoDir: gitRepoDir,
 		WorkingDir: workingDir,
 		CacheDir:   l.cfg.GetString("cacheDir"),
 		ThemesDir:  paths.AbsPathify(workingDir, l.cfg.GetString("themesDir")),

@@ -42,7 +42,7 @@ func (g *gitInfo) forPage(p page.Page) source.GitInfo {
 
 func newGitInfo(d *deps.Deps) (*gitInfo, error) {
 	opts := gitmap.Options{
-		Repository: d.Conf.BaseConfig().WorkingDir,
+		Repository: d.Conf.BaseConfig().GitRepoDir,
 		GetGitCommandFunc: func(stdout, stderr io.Writer, args ...string) (gitmap.Runner, error) {
 			var argsv []any
 			for _, arg := range args {
