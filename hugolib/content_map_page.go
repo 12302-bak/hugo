@@ -1632,7 +1632,7 @@ func (sa *sitePagesAssembler) assembleTermsAndTranslations() error {
 						continue
 					}
 					viewTermKey := "/" + viewName.plural + "/" + v
-					pi := sa.Site.Conf.PathParser().Parse(files.ComponentFolderContent, viewTermKey+"/_index.md")
+					pi := sa.Site.Conf.PathParser().Parse(files.ComponentFolderContent, viewTermKey+"/README.md")
 					term := pages.Get(pi.Base())
 					if term == nil {
 						m := &pageMeta{
@@ -1986,7 +1986,7 @@ func (sa *sitePagesAssembler) addMissingRootSections() error {
 
 			// Try to preserve the original casing if possible.
 			sectionUnnormalized := p.Unnormalized().Section()
-			pth := sa.s.Conf.PathParser().Parse(files.ComponentFolderContent, "/"+sectionUnnormalized+"/_index.md")
+			pth := sa.s.Conf.PathParser().Parse(files.ComponentFolderContent, "/"+sectionUnnormalized+"/README.md")
 			nn := w.Tree.Get(pth.Base())
 
 			if nn == nil {
@@ -2016,7 +2016,7 @@ func (sa *sitePagesAssembler) addMissingRootSections() error {
 	}
 
 	if !hasHome {
-		p := sa.Site.Conf.PathParser().Parse(files.ComponentFolderContent, "/_index.md")
+		p := sa.Site.Conf.PathParser().Parse(files.ComponentFolderContent, "/README.md")
 		m := &pageMeta{
 			s:        sa.Site,
 			pathInfo: p,
@@ -2052,7 +2052,7 @@ func (sa *sitePagesAssembler) addMissingTaxonomies() error {
 		if v := tree.Get(key); v == nil {
 			m := &pageMeta{
 				s:        sa.Site,
-				pathInfo: sa.Conf.PathParser().Parse(files.ComponentFolderContent, key+"/_index.md"),
+				pathInfo: sa.Conf.PathParser().Parse(files.ComponentFolderContent, key+"/README.md"),
 				pageMetaParams: &pageMetaParams{
 					pageConfig: &pagemeta.PageConfig{
 						Kind: kinds.KindTaxonomy,

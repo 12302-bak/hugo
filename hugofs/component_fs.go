@@ -19,6 +19,7 @@ import (
 	"path"
 	"runtime"
 	"sort"
+	"strings"
 
 	"github.com/gohugoio/hugo/common/herrors"
 	"github.com/gohugoio/hugo/common/paths"
@@ -144,6 +145,14 @@ func (f *componentFsDir) ReadDir(count int) ([]iofs.DirEntry, error) {
 
 		if fimim.Weight != fimjm.Weight {
 			return fimim.Weight > fimjm.Weight
+		}
+
+		indexFile := "README" + ".md"
+		if strings.EqualFold(fimi.Name(), indexFile) {
+			return true
+		}
+		if strings.EqualFold(fimj.Name(), indexFile) {
+			return false
 		}
 
 		return fimi.Name() < fimj.Name()

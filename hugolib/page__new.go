@@ -103,7 +103,7 @@ func (h *HugoSites) doNewPage(m *pageMeta) (*pageState, *paths.Path, error) {
 			}
 
 			if isBranch {
-				s += "/_index." + ext
+				s += "/README." + ext
 			} else {
 				s += "/index." + ext
 			}
