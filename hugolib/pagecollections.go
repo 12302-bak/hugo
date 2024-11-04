@@ -129,7 +129,7 @@ func (c *pageFinder) getContentNode(context page.Page, isReflink bool, ref strin
 	// We are always looking for a content file and having an extension greatly simplifies the code that follows,
 	// even in the case where the extension does not match this one.
 	if ref == "/" {
-		if n, err := c.getContentNodeForRef(context, isReflink, false, inRef, "/_index"+defaultContentExt); n != nil || err != nil {
+		if n, err := c.getContentNodeForRef(context, isReflink, false, inRef, "/README"+defaultContentExt); n != nil || err != nil {
 			return n, err
 		}
 	} else if strings.HasSuffix(ref, "/index") {

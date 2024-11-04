@@ -820,7 +820,7 @@ func (h *HugoSites) processPartialFileEvents(ctx context.Context, l logg.LevelLo
 				// so we will catch this even if it is a file without extension.
 				// This avoids us walking up to the home page bundle for the common case
 				// of renaming root sections.
-				p = p + "/_index.md"
+				p = p + "/README.md"
 				deletedDirs = append(deletedDirs, cps.Path)
 			}
 

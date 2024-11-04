@@ -276,7 +276,7 @@ func (l PermalinkExpander) pageToPermalinkFilename(p Page, _ string) (string, er
 		// Page bundles; the directory name will hopefully have a better name.
 		dir := strings.TrimSuffix(p.File().Dir(), helpers.FilePathSeparator)
 		_, name = filepath.Split(dir)
-	} else if name == "_index" {
+	} else if name == "README" {
 		return "", nil
 	}
 
