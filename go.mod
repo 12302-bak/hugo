@@ -1,6 +1,8 @@
 module github.com/gohugoio/hugo
 
 require (
+	github.com/12302-bak/gitmap v1.6.2
+	// github.com/bep/gitmap v1.6.0
 	github.com/BurntSushi/locker v0.0.0-20171006230638-a6e239ea1c69
 	github.com/alecthomas/chroma/v2 v2.14.0
 	github.com/armon/go-radix v1.0.1-0.20221118154546-54df44f2176c
@@ -8,7 +10,6 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/cloudfront v1.38.4
 	github.com/bep/clocks v0.5.0
 	github.com/bep/debounce v1.2.0
-	github.com/bep/gitmap v1.6.0
 	github.com/bep/goat v0.5.0
 	github.com/bep/godartsass v1.2.0
 	github.com/bep/godartsass/v2 v2.1.0

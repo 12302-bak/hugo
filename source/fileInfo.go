@@ -18,7 +18,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/bep/gitmap"
+	"github.com/12302-bak/gitmap"
 	"github.com/gohugoio/hugo/common/hashing"
 	"github.com/gohugoio/hugo/common/hugo"
 	"github.com/gohugoio/hugo/common/paths"
@@ -174,6 +174,8 @@ type GitInfo struct {
 	AuthorDate time.Time `json:"authorDate"`
 	// The commit date.
 	CommitDate time.Time `json:"commitDate"`
+	// The create date.
+	CreateDate time.Time `json:"createDate"`
 	// The commit message's body.
 	Body string `json:"body"`
 }

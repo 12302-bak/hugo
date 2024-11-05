@@ -18,7 +18,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/bep/gitmap"
+	"github.com/12302-bak/gitmap"
 	"github.com/gohugoio/hugo/common/hexec"
 	"github.com/gohugoio/hugo/deps"
 	"github.com/gohugoio/hugo/resources/page"
