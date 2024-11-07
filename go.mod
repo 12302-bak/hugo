@@ -2,6 +2,7 @@ module github.com/gohugoio/hugo
 
 require (
 	github.com/12302-bak/gitmap v1.6.2
+	github.com/12302-bak/hugo-obsidian/v3 v3.21.2
 	// github.com/bep/gitmap v1.6.0
 	github.com/BurntSushi/locker v0.0.0-20171006230638-a6e239ea1c69
 	github.com/alecthomas/chroma/v2 v2.14.0
@@ -100,6 +101,11 @@ require (
 	github.com/Azure/go-autorest v14.2.0+incompatible // indirect
 	github.com/Azure/go-autorest/autorest/to v0.4.0 // indirect
 	github.com/AzureAD/microsoft-authentication-library-for-go v1.2.2 // indirect
+	github.com/BurntSushi/toml v0.4.1 // indirect
+	github.com/PuerkitoBio/goquery v1.8.0 // indirect
+	github.com/abhinav/goldmark-wikilink v0.3.0 // indirect
+	github.com/adrg/frontmatter v0.2.0 // indirect
+	github.com/andybalholm/cascadia v1.3.1 // indirect
 	github.com/aws/aws-sdk-go v1.55.5 // indirect
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.6.3 // indirect
 	github.com/aws/aws-sdk-go-v2/config v1.27.27 // indirect

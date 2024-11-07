@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"html/template"
 	"io"
+	"log"
 	"mime"
 	"net/url"
 	"os"
@@ -28,6 +29,8 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	obsidian "github.com/12302-bak/hugo-obsidian/v3"
 
 	"github.com/bep/logg"
 	"github.com/gohugoio/hugo/cache/dynacache"
@@ -310,12 +313,39 @@ func NewHugoSites(cfg deps.DepsCfg) (*HugoSites, error) {
 	})
 
 	var err error
+	if cc := buildJsonForObsidian(cfg); cc != nil {
+		fmt.Println("build search json error.!")
+	}
 	h, err = newHugoSites(cfg, firstSiteDeps, pageTrees, sites)
 	if err == nil && h == nil {
 		panic("hugo: newHugoSitesNew returned nil error and nil HugoSites")
 	}
 
 	return h, err
+}
+
+func buildJsonForObsidian(cfg deps.DepsCfg) error {
+
+	languageConfig := cfg.Configs.GetFirstLanguageConfig()
+	workDir := languageConfig.WorkingDir()
+	contentDir := languageConfig.Dirs().ContentDir
+
+	create := filepath.Join(workDir, "assets", "indices", "tmp")
+	outPut := filepath.Dir(create)
+	contentDir = filepath.Join(workDir, contentDir)
+	fmt.Println("obsidian search json output path:", outPut)
+
+	dir := filepath.Dir(create)
+	err := os.MkdirAll(dir, 0755)
+	if err != nil {
+		log.Fatalf("Failed to create directory: %v", err)
+	}
+
+	errBuild := obsidian.BuildData(workDir, contentDir, outPut)
+	if errBuild != nil {
+		panic(errBuild)
+	}
+	return errBuild
 }
 
 func newHugoSites(cfg deps.DepsCfg, d *deps.Deps, pageTrees *pageTrees, sites []*Site) (*HugoSites, error) {

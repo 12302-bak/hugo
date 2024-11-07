@@ -152,7 +152,9 @@ func (e *Exec) new(name string, fullyQualifiedName string, arg ...any) (Runner, 
 		env:                env,
 	}
 
-	return cm.command(arg...)
+	command, err := cm.command(arg...)
+	println(command.c.String())
+	return command, err
 }
 
 // Npx will in order:
