@@ -2,7 +2,7 @@ module github.com/gohugoio/hugo
 
 require (
 	github.com/12302-bak/gitmap v1.6.2
-	github.com/12302-bak/hugo-obsidian/v3 v3.21.2
+	github.com/12302-bak/hugo-obsidian/v3 v3.21.3
 	// github.com/bep/gitmap v1.6.0
 	github.com/BurntSushi/locker v0.0.0-20171006230638-a6e239ea1c69
 	github.com/alecthomas/chroma/v2 v2.14.0
