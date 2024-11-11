@@ -176,6 +176,8 @@ type GitInfo struct {
 	CommitDate time.Time `json:"commitDate"`
 	// The create date.
 	CreateDate time.Time `json:"createDate"`
+	// bak
+	FromGetJson *gitmap.GitInfo
 	// The commit message's body.
 	Body string `json:"body"`
 }
