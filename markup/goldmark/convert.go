@@ -20,6 +20,7 @@ import (
 	"github.com/gohugoio/hugo-goldmark-extensions/extras"
 	"github.com/gohugoio/hugo/markup/goldmark/blockquotes"
 	"github.com/gohugoio/hugo/markup/goldmark/codeblocks"
+	"github.com/gohugoio/hugo/markup/goldmark/comment_block"
 	"github.com/gohugoio/hugo/markup/goldmark/goldmark_config"
 	"github.com/gohugoio/hugo/markup/goldmark/hugocontext"
 	"github.com/gohugoio/hugo/markup/goldmark/images"
@@ -273,6 +274,9 @@ func (c *goldmarkConverter) Render(ctx converter.RenderContext, doc any) (conver
 		return nil, err
 	}
 
+	data := buf.Bytes()
+	buf.Reset()
+	buf.Write(comment_block.ApplyPostProcessors(data))
 	return renderResult{
 		ResultRender: buf,
 	}, nil
