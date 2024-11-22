@@ -13,6 +13,7 @@ var (
 	_processors = []Processor{
 		replacePanelsOuter(panels, "$1<div class=\"docsify-example-panels\">$3</div>"),
 		replaceAlerts(),
+		replaceTabs(),
 	}
 )
 

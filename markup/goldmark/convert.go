@@ -28,7 +28,9 @@ import (
 	"github.com/gohugoio/hugo/markup/goldmark/internal/render"
 	"github.com/gohugoio/hugo/markup/goldmark/passthrough"
 	"github.com/gohugoio/hugo/markup/goldmark/tables"
+	mathjax "github.com/litao91/goldmark-mathjax"
 	"github.com/yuin/goldmark/util"
+	"go.abhg.dev/goldmark/mermaid"
 
 	"github.com/yuin/goldmark"
 	emoji "github.com/yuin/goldmark-emoji"
@@ -199,6 +201,16 @@ func newMarkdown(pcfg converter.ProviderConfig) goldmark.Markdown {
 	if cfg.Parser.Attribute.Block {
 		extensions = append(extensions, attributes.New())
 	}
+
+	extensions = append(extensions,
+		extension.NewTable(extension.WithTableCellAlignMethod(extension.TableCellAlignAttribute)),
+		mathjax.MathJax,
+		&mermaid.Extender{
+			RenderMode:   mermaid.RenderModeClient,
+			ContainerTag: "div",
+			NoScript:     true,
+		},
+	)
 
 	md := goldmark.New(
 		goldmark.WithExtensions(

@@ -434,6 +434,7 @@ func newHugoSites(cfg deps.DepsCfg, d *deps.Deps, pageTrees *pageTrees, sites []
 		if err != nil {
 			return nil, fmt.Errorf("failed to load Git info: %w", err)
 		}
+		h.Log.Println("Successes to read Git info!\n")
 		return nil, nil
 	})
 

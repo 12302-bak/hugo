@@ -142,7 +142,7 @@ func (r *hookedRenderer) SetOption(name renderer.OptionName, value any) {
 func (r *hookedRenderer) RegisterFuncs(reg renderer.NodeRendererFuncRegisterer) {
 	reg.Register(ast.KindLink, r.renderLink)
 	reg.Register(ast.KindAutoLink, r.renderAutoLink)
-	reg.Register(ast.KindImage, r.renderImage)
+	//reg.Register(ast.KindImage, r.renderImage)
 	reg.Register(ast.KindHeading, r.renderHeading)
 }
 

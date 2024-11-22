@@ -1,9 +1,6 @@
 module github.com/gohugoio/hugo
 
 require (
-	github.com/12302-bak/gitmap v1.6.4
-	github.com/12302-bak/hugo-obsidian/v3 v3.21.4
-	// github.com/bep/gitmap v1.6.0
 	github.com/BurntSushi/locker v0.0.0-20171006230638-a6e239ea1c69
 	github.com/alecthomas/chroma/v2 v2.14.0
 	github.com/armon/go-radix v1.0.1-0.20221118154546-54df44f2176c
@@ -126,7 +123,6 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/sts v1.30.3 // indirect
 	github.com/aws/smithy-go v1.20.3 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.4 // indirect
-	github.com/dlclark/regexp2 v1.11.0 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
@@ -174,6 +170,19 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	howett.net/plist v1.0.0 // indirect
 	software.sslmate.com/src/go-pkcs12 v0.2.0 // indirect
+)
+
+require (
+	github.com/12302-bak/gitmap v1.6.4
+	github.com/12302-bak/hugo-obsidian/v3 v3.21.4
+	github.com/dlclark/regexp2 v1.11.0
+	github.com/litao91/goldmark-mathjax v0.0.0-20210217064022-a43cf739a50f
+	go.abhg.dev/goldmark/mermaid v0.5.0
+)
+
+replace (
+	github.com/bep/gitmap v1.6.0 => github.com/12302-bak/gitmap v1.6.4
+	github.com/yuin/goldmark v1.7.4 => github.com/12302-bak/goldmark v0.0.0-20241122030036-3ba08f8e1fda
 )
 
 go 1.22.6

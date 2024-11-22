@@ -50,7 +50,7 @@ func newHTMLRenderer() renderer.NodeRenderer {
 }
 
 func (r *htmlRenderer) RegisterFuncs(reg renderer.NodeRendererFuncRegisterer) {
-	reg.Register(ast.KindBlockquote, r.renderBlockquote)
+	//reg.Register(ast.KindBlockquote, r.renderBlockquote)
 }
 
 const (
