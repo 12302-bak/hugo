@@ -155,4 +155,6 @@ type RenderContext struct {
 
 	// GerRenderer provides hook renderers on demand.
 	GetRenderer hooks.GetRendererFunc
+
+	BaseUrl string
 }

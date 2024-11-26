@@ -15,6 +15,8 @@ package goldmark
 
 import (
 	"bytes"
+	url2 "net/url"
+	"regexp"
 	"strings"
 
 	"github.com/gohugoio/hugo/common/types/hstring"
@@ -142,7 +144,7 @@ func (r *hookedRenderer) SetOption(name renderer.OptionName, value any) {
 func (r *hookedRenderer) RegisterFuncs(reg renderer.NodeRendererFuncRegisterer) {
 	reg.Register(ast.KindLink, r.renderLink)
 	reg.Register(ast.KindAutoLink, r.renderAutoLink)
-	//reg.Register(ast.KindImage, r.renderImage)
+	reg.Register(ast.KindImage, r.renderImage)
 	reg.Register(ast.KindHeading, r.renderHeading)
 }
 
@@ -152,6 +154,7 @@ func (r *hookedRenderer) renderImage(w util.BufWriter, source []byte, node ast.N
 
 	ctx, ok := w.(*render.Context)
 	if ok {
+		writePathToRoot(ctx)
 		h := ctx.RenderContext().GetRenderer(hooks.ImageRendererType, nil)
 		ok = h != nil
 		if ok {
@@ -160,7 +163,7 @@ func (r *hookedRenderer) renderImage(w util.BufWriter, source []byte, node ast.N
 	}
 
 	if !ok {
-		return r.renderImageDefault(w, source, node, entering)
+		return r.renderImageDefault2(w, source, node, entering)
 	}
 
 	if entering {
@@ -240,6 +243,70 @@ func (r *hookedRenderer) renderImageDefault(w util.BufWriter, source []byte, nod
 		_, _ = w.WriteString(` title="`)
 		r.Writer.Write(w, n.Title)
 		_ = w.WriteByte('"')
+	}
+	if n.Attributes() != nil {
+		attrs := r.filterInternalAttributes(n.Attributes())
+		attributes.RenderASTAttributes(w, attrs...)
+	}
+	if r.XHTML {
+		_, _ = w.WriteString(" />")
+	} else {
+		_, _ = w.WriteString(">")
+	}
+	return ast.WalkSkipChildren, nil
+}
+
+var docsifyStyleImg = regexp.MustCompile(`(?:^|\s)((:([\w-]+:?)=?([\w-%]+)?)|([\w\s]+\w))`)
+var rootPath []byte
+
+func writePathToRoot(ctx *render.Context) {
+	if rootPath == nil {
+		url := ctx.ContextData.RenderContext().BaseUrl
+		parse, _ := url2.Parse(url)
+		path := parse.Path
+		rootPath = []byte(path)
+	}
+}
+
+func (r *hookedRenderer) renderImageDefault2(w util.BufWriter, source []byte, node ast.Node, entering bool) (ast.WalkStatus, error) {
+	if !entering {
+		return ast.WalkContinue, nil
+	}
+	n := node.(*ast.Image)
+	_, _ = w.WriteString("<img src=\"")
+
+	if !strings.HasPrefix(string(n.Destination), "http") {
+		_, _ = w.WriteString(string(rootPath))
+	}
+
+	if r.Unsafe || !html.IsDangerousURL(n.Destination) {
+		_, _ = w.Write(util.EscapeHTML(util.URLEscape(n.Destination, true)))
+	}
+
+	_, _ = w.WriteString(`" alt="`)
+	_, _ = w.Write(nodeToHTMLText(n, source))
+	_ = w.WriteByte('"')
+
+	if n.Title != nil {
+		match := docsifyStyleImg.FindAllStringSubmatch(string(n.Title), -1)
+		size := ""
+		title := ""
+		if match != nil {
+			for i := 0; i < len(match); i++ {
+				i2 := match[i]
+				if strings.HasPrefix(i2[1], ":size") {
+					split := strings.Split(i2[4], "x")
+					size = " width=\"" + split[0] + "\""
+					if len(split) > 1 && split[1] != "" {
+						size = size + " height=\"" + split[1] + "\""
+					}
+				}
+				if !strings.HasPrefix(i2[1], ":") {
+					title = " title=\"" + i2[1] + "\""
+				}
+			}
+		}
+		_, _ = w.WriteString(size + title)
 	}
 	if n.Attributes() != nil {
 		attrs := r.filterInternalAttributes(n.Attributes())

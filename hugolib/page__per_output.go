@@ -438,6 +438,7 @@ func (pco *pageContentOutput) RenderContent(ctx context.Context, content []byte,
 		Src:         content,
 		RenderTOC:   true,
 		GetRenderer: pco.renderHooks.getRenderer,
+		BaseUrl:     pco.po.p.s.conf.BaseURL,
 	}
 	r, err := p.Render(rctx, doc)
 	return r, ok, err
