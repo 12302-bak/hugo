@@ -40,9 +40,9 @@ type PathParser struct {
 // NormalizePathString returns a normalized path string using the very basic Hugo rules.
 func NormalizePathStringBasic(s string) string {
 	// All lower case.
-	if !strings.HasSuffix(s, "README"+".md") {
-		s = strings.ToLower(s)
-	}
+	//if !strings.HasSuffix(s, "README"+".md") {
+	//	s = strings.ToLower(s)
+	//}
 
 	// Replace spaces with hyphens.
 	s = strings.ReplaceAll(s, " ", "-")
