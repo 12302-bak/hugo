@@ -342,7 +342,7 @@ func buildJsonForObsidian(cfg deps.DepsCfg) error {
 		log.Fatalf("Failed to create directory: %v", err)
 	}
 
-	errBuild := obsidian.BuildData(baseUrl.WithoutPath, workDir, contentDir, outPut)
+	errBuild := obsidian.BuildData(baseUrl.WithPathNoTrailingSlash, workDir, contentDir, outPut)
 	if errBuild != nil {
 		panic(errBuild)
 	}
