@@ -327,6 +327,7 @@ func NewHugoSites(cfg deps.DepsCfg) (*HugoSites, error) {
 func buildJsonForObsidian(cfg deps.DepsCfg) error {
 
 	languageConfig := cfg.Configs.GetFirstLanguageConfig()
+	baseUrl := cfg.Configs.Base.C.BaseURL
 	workDir := languageConfig.WorkingDir()
 	contentDir := languageConfig.Dirs().ContentDir
 
@@ -341,7 +342,7 @@ func buildJsonForObsidian(cfg deps.DepsCfg) error {
 		log.Fatalf("Failed to create directory: %v", err)
 	}
 
-	errBuild := obsidian.BuildData(workDir, contentDir, outPut)
+	errBuild := obsidian.BuildData(baseUrl.WithoutPath, workDir, contentDir, outPut)
 	if errBuild != nil {
 		panic(errBuild)
 	}

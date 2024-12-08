@@ -86,6 +86,11 @@ func (i HugoInfo) Generator() template.HTML {
 	return template.HTML(fmt.Sprintf(`<meta name="generator" content="Hugo %s">`, CurrentVersion.String()))
 }
 
+// GeneratorBuildInfo a Hugo meta generator HTML tag.
+func (i HugoInfo) GeneratorBuildInfo() template.HTML {
+	return template.HTML(fmt.Sprintf(`<meta name="generator-build-info" content="%s %s">`, BuildVersionString(), "Repo=https://github.com/12302-bak/hugo/tree/_12302"))
+}
+
 // IsDevelopment reports whether the current running environment is "development".
 func (i HugoInfo) IsDevelopment() bool {
 	return i.Environment == EnvironmentDevelopment
@@ -228,8 +233,9 @@ type buildInfo struct {
 	RevisionTime         string
 	Modified             bool
 
-	GoOS   string
-	GoArch string
+	GoOS      string
+	GoArch    string
+	GoVersion string
 
 	*debug.BuildInfo
 }
@@ -246,7 +252,7 @@ func getBuildInfo() *buildInfo {
 			return
 		}
 
-		bInfo = &buildInfo{BuildInfo: bi}
+		bInfo = &buildInfo{BuildInfo: bi, GoVersion: bi.GoVersion}
 
 		for _, s := range bInfo.Settings {
 			switch s.Key {

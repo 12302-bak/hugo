@@ -174,7 +174,7 @@ require (
 
 require (
 	github.com/12302-bak/gitmap v1.6.4
-	github.com/12302-bak/hugo-obsidian/v3 v3.21.4
+	github.com/12302-bak/hugo-obsidian/v3 v3.21.5-0.20241208215044-a62ac7c8363c
 	github.com/dlclark/regexp2 v1.11.0
 	github.com/litao91/goldmark-mathjax v0.0.0-20210217064022-a43cf739a50f
 	go.abhg.dev/goldmark/mermaid v0.5.0

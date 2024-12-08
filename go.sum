@@ -54,8 +54,8 @@ github.com/12302-bak/gitmap v1.6.4 h1:+dXFAcT7R8yiCfEHXOacc0uli8ULUgU7XSWmiR0jZz
 github.com/12302-bak/gitmap v1.6.4/go.mod h1:ZZUY+u1HPjI0vQ2/wJda53YrMgB97BPC1KL71v8yzCo=
 github.com/12302-bak/goldmark v0.0.0-20241128034013-0e18252025ab h1:EwaF57XAisI67GifsXXip/JnCGppHuRAtYa57quTqF4=
 github.com/12302-bak/goldmark v0.0.0-20241128034013-0e18252025ab/go.mod h1:2vGQsnu8m8+0DzDc3OVyshQd/UBCgE6YlK6TX/4Qdhw=
-github.com/12302-bak/hugo-obsidian/v3 v3.21.4 h1:ZBlcuDGC+MqxdI2lFzo3rCMXQ9mAue+/E8tcEwz35wk=
-github.com/12302-bak/hugo-obsidian/v3 v3.21.4/go.mod h1:bZjAmTJgAaRJxc0gsolKlmlBGcJLUQU8OAUiHNoVQo0=
+github.com/12302-bak/hugo-obsidian/v3 v3.21.5-0.20241208215044-a62ac7c8363c h1:X/QpIhwUSKdv1YvwMGfIU2tqx0ZFt6YMn8TS8oLNm0Y=
+github.com/12302-bak/hugo-obsidian/v3 v3.21.5-0.20241208215044-a62ac7c8363c/go.mod h1:bZjAmTJgAaRJxc0gsolKlmlBGcJLUQU8OAUiHNoVQo0=
 github.com/Azure/azure-sdk-for-go/sdk/azcore v1.14.0 h1:nyQWyZvwGTvunIMxi1Y9uXkcyr+I7TeNrr/foo4Kpk8=
 github.com/Azure/azure-sdk-for-go/sdk/azcore v1.14.0/go.mod h1:l38EPgmsp71HHLq9j7De57JcKOWPyhrsW1Awm1JS6K0=
 github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.7.0 h1:tfLQ34V6F7tVSwoTf/4lH5sE0o6eCJuNDTmH09nDpbc=
