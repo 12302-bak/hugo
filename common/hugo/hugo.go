@@ -88,7 +88,7 @@ func (i HugoInfo) Generator() template.HTML {
 
 // GeneratorBuildInfo a Hugo meta generator HTML tag.
 func (i HugoInfo) GeneratorBuildInfo() template.HTML {
-	return template.HTML(fmt.Sprintf(`<meta name="generator-build-info" content="%s %s">`, BuildVersionString(), "Repo=https://github.com/12302-bak/hugo/tree/_12302"))
+	return template.HTML(fmt.Sprintf(`<meta name="generator-build-info" content="%s %s %s">`, BuildVersionString(), "GoVersion="+bInfo.GoVersion, "Repo=https://github.com/12302-bak/hugo/tree/_12302"))
 }
 
 // IsDevelopment reports whether the current running environment is "development".
