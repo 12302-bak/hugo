@@ -44,7 +44,7 @@ func replaceTabs() Processor {
 				item := tabTitleHtml + tabContentHtml
 				partial, err := tabDetailsMarkup.Replace(tabBlock, item, 0, 1)
 				itemAppend += item
-				anchorAppend += "<h6 id=\"" + tabId + "\" class=\"anchor_hr\" style=\"font-size: 0rem; margin: 0 0;\"></h6>"
+				anchorAppend += "<h6 id=\"" + tabId + "\" class=\"anchor_hr\" style=\"font-size: 0rem; margin: 0; padding: 0; border-width: 0px;\"></h6>"
 
 				if err != nil {
 					println(err)
