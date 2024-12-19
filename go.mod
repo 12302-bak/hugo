@@ -182,7 +182,7 @@ require (
 
 replace (
 	github.com/bep/gitmap v1.6.0 => github.com/12302-bak/gitmap v1.6.4
-	github.com/yuin/goldmark v1.7.4 => github.com/12302-bak/goldmark v0.0.0-20241216225700-f95207915f43
+	github.com/yuin/goldmark v1.7.4 => github.com/12302-bak/goldmark v0.0.0-20241219202426-72083746f14f
 )
 
 go 1.22.6
