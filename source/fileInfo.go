@@ -177,7 +177,10 @@ type GitInfo struct {
 	// The create date.
 	CreateDate time.Time `json:"createDate"`
 	// bak
-	FromGetJson *gitmap.GitInfo
+	FromGetJson     *gitmap.GitInfo
+	MergeCreateDate time.Time `json:"mergeCreateDate"` // The merge create date
+	MergeUpdateDate time.Time `json:"mergeUpdateDate"` // The merge update date
+	Year            string    `json:"year"`            // timeline year for group
 	// The commit message's body.
 	Body string `json:"body"`
 }

@@ -173,7 +173,7 @@ require (
 )
 
 require (
-	github.com/12302-bak/gitmap v1.6.4
+	github.com/12302-bak/gitmap v1.6.5-0.20241231115430-15923c816422
 	github.com/12302-bak/hugo-obsidian/v3 v3.21.5-0.20241226181128-e73f1b1da21e
 	github.com/dlclark/regexp2 v1.11.0
 	github.com/litao91/goldmark-mathjax v0.0.0-20210217064022-a43cf739a50f
