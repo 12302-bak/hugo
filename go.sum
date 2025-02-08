@@ -52,8 +52,8 @@ cloud.google.com/go/storage v1.43.0/go.mod h1:ajvxEa7WmZS1PxvKRq4bq0tFT3vMd502Jw
 dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7gZCb22OMCxBHrMx7a5I7Hp++hsVxbQ4BYO7hU=
 github.com/12302-bak/gitmap v1.6.5-0.20241231115430-15923c816422 h1:z2H198ouwbksMg+IhmH/7Q07vzMJg9L12ttzxfymrGc=
 github.com/12302-bak/gitmap v1.6.5-0.20241231115430-15923c816422/go.mod h1:ZZUY+u1HPjI0vQ2/wJda53YrMgB97BPC1KL71v8yzCo=
-github.com/12302-bak/goldmark v0.0.0-20241219202426-72083746f14f h1:jZk0g8Nd5xxKSZ2YjDlSgT+w04D9musriO7YHFa9cqk=
-github.com/12302-bak/goldmark v0.0.0-20241219202426-72083746f14f/go.mod h1:2vGQsnu8m8+0DzDc3OVyshQd/UBCgE6YlK6TX/4Qdhw=
+github.com/12302-bak/goldmark v0.0.0-20250208111000-01606a4cd36d h1:v8XWuoy76EyOGSxntkRpS91ST45U7gNDkJy4f549OZU=
+github.com/12302-bak/goldmark v0.0.0-20250208111000-01606a4cd36d/go.mod h1:2vGQsnu8m8+0DzDc3OVyshQd/UBCgE6YlK6TX/4Qdhw=
 github.com/12302-bak/hugo-obsidian/v3 v3.21.5-0.20241226181128-e73f1b1da21e h1:R7sE50vcaCx04J7ubJdtC39/LAG+YCAWiTeMqiaySiE=
 github.com/12302-bak/hugo-obsidian/v3 v3.21.5-0.20241226181128-e73f1b1da21e/go.mod h1:bZjAmTJgAaRJxc0gsolKlmlBGcJLUQU8OAUiHNoVQo0=
 github.com/Azure/azure-sdk-for-go/sdk/azcore v1.14.0 h1:nyQWyZvwGTvunIMxi1Y9uXkcyr+I7TeNrr/foo4Kpk8=
