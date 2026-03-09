@@ -733,10 +733,19 @@ func (c *cachedContentScope) contentToC(ctx context.Context) (contentTableOfCont
 			createAndSetToC := func(tocProvider converter.TableOfContentsProvider) {
 				cfg := p.s.ContentSpec.Converters.GetMarkupConfig()
 				ct.tableOfContents = tocProvider.TableOfContents()
+
+				params := p.m.pageConfig.Params
+				getIntParam := func(key string, fallback int) int {
+					if v, ok := params[key]; ok {
+						return cast.ToInt(v)
+					}
+					return fallback
+				}
+
 				ct.tableOfContentsHTML = template.HTML(
 					ct.tableOfContents.ToHTML(
-						cfg.TableOfContents.StartLevel,
-						cfg.TableOfContents.EndLevel,
+						getIntParam(strings.ToLower("tocStartLevel"), cfg.TableOfContents.StartLevel),
+						getIntParam(strings.ToLower("tocEndLevel"), cfg.TableOfContents.EndLevel),
 						cfg.TableOfContents.Ordered,
 					),
 				)
