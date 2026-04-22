@@ -86,9 +86,17 @@ func (t *tocTransformer) Transform(n *ast.Document, reader text.Reader, pc parse
 				tocHeading.ID = string(id.([]byte))
 				tocHeading.Level = level
 			}
+		// remove toc link. 12302
+		case
+			ast.KindLink:
+			err := t.r.Render(&headingText, reader.Source(), n.FirstChild())
+			if err != nil {
+				return s, err
+			}
+
+			return ast.WalkSkipChildren, nil
 		case
 			ast.KindCodeSpan,
-			ast.KindLink,
 			ast.KindImage,
 			ast.KindEmphasis,
 			strikethroughAst.KindStrikethrough,
