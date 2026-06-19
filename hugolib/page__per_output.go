@@ -433,12 +433,23 @@ func (pco *pageContentOutput) RenderContent(ctx context.Context, content []byte,
 	if !ok {
 		return nil, ok, nil
 	}
+
+	params := pco.po.p.s.conf.Params
+	getStringParam := func(key string) string {
+		if v, ok := params[key]; ok {
+			if s, ok := v.(string); ok {
+				return s
+			}
+		}
+		return ""
+	}
 	rctx := converter.RenderContext{
 		Ctx:         ctx,
 		Src:         content,
 		RenderTOC:   true,
 		GetRenderer: pco.renderHooks.getRenderer,
 		BaseUrl:     pco.po.p.s.conf.BaseURL,
+		Cdn:         getStringParam("cdn"),
 	}
 	r, err := p.Render(rctx, doc)
 	return r, ok, err

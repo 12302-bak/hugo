@@ -258,6 +258,7 @@ func (r *hookedRenderer) renderImageDefault(w util.BufWriter, source []byte, nod
 
 var docsifyStyleImg = regexp.MustCompile(`(?:^|\s)((:([\w-]+:?)=?([\w-%]+)?)|([\w\s]+\w))`)
 var rootPath []byte
+var cdn string
 
 func writePathToRoot(ctx *render.Context) {
 	if rootPath == nil {
@@ -265,6 +266,7 @@ func writePathToRoot(ctx *render.Context) {
 		parse, _ := url2.Parse(url)
 		path := parse.Path
 		rootPath = []byte(path)
+		cdn = ctx.ContextData.RenderContext().Cdn
 	}
 }
 
@@ -275,7 +277,12 @@ func (r *hookedRenderer) renderImageDefault2(w util.BufWriter, source []byte, no
 	n := node.(*ast.Image)
 	_, _ = w.WriteString("<img src=\"")
 
+	suffix := "\""
 	if !strings.HasPrefix(string(n.Destination), "http") {
+		if cdn != "" {
+			_, _ = w.WriteString(cdn + string(n.Destination) + "\" onerror=\"this.onerror=null; this.src='")
+			suffix = "';\""
+		}
 		_, _ = w.WriteString(string(rootPath))
 	}
 
@@ -283,7 +290,7 @@ func (r *hookedRenderer) renderImageDefault2(w util.BufWriter, source []byte, no
 		_, _ = w.Write(util.EscapeHTML(util.URLEscape(n.Destination, true)))
 	}
 
-	_, _ = w.WriteString(`" alt="`)
+	_, _ = w.WriteString(suffix + ` alt="`)
 	_, _ = w.Write(nodeToHTMLText(n, source))
 	_ = w.WriteByte('"')
 

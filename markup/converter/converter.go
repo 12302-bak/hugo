@@ -157,4 +157,6 @@ type RenderContext struct {
 	GetRenderer hooks.GetRendererFunc
 
 	BaseUrl string
+
+	Cdn string
 }
